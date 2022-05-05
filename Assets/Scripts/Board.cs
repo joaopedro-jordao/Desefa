@@ -17,6 +17,7 @@ public class Board : MonoBehaviour
     //TILE prefabs
     public GameObject highlightTile;
     public GameObject healthUI, attackUI;
+    public string pieceMaxHP, pieceCurrHP, pieceAtk;
 
     void Start()
     {
@@ -56,8 +57,10 @@ public class Board : MonoBehaviour
 
     void Update()
     {
+        Vector2Int mousePosition = MousePositionOnBoard();
+        SetStatus(mousePosition);
+
         if (Input.GetMouseButtonDown(0)){
-            Vector2Int mousePosition = MousePositionOnBoard();
 
             if (mousePosition.x > 0){
                 if (selectedPiece == null){
@@ -65,7 +68,7 @@ public class Board : MonoBehaviour
                 }else{
                     if (IsInAvailableMoves(mousePosition)){
                         SoundManager.instance.Stop();
-                        
+
                         if (board[mousePosition.x, mousePosition.y].HasPiece()){
                             GameObject otherPiece = board[mousePosition.x, mousePosition.y].GetPiece();
 
@@ -215,5 +218,18 @@ public class Board : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void SetStatus(Vector2Int mousePosition){
+        if (mousePosition == new Vector2Int() || !board[mousePosition.x, mousePosition.y].HasPiece()){
+            pieceMaxHP = "-";
+            pieceCurrHP = "-";
+            pieceAtk = "-";
+        } else if (board[mousePosition.x, mousePosition.y].HasPiece()){
+            GameObject piece = board[mousePosition.x, mousePosition.y].GetPiece();
+            pieceMaxHP = piece.GetComponent<Piece>().GetMaxHP().ToString();
+            pieceCurrHP = piece.GetComponent<Piece>().GetCurrHP().ToString();
+            pieceAtk = piece.GetComponent<Piece>().GetAP().ToString();
+        }
     }
 }

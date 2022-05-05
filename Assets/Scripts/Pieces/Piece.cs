@@ -68,6 +68,9 @@ public abstract class Piece : MonoBehaviour{
     public int GetAP(){
         return this.attackPower;
     }
+    public int GetMaxHP(){
+        return this.maxHitPoints;
+    }
 
     public void MergePiece(int pieceHP){
         this.currHitPoints = currHitPoints + pieceHP;
