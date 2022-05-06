@@ -25,7 +25,7 @@ public class CountdownTimer : MonoBehaviour
 
     void Start() {
         startingTime = 60;
-        currentTime = startingTime*60
+        currentTime = startingTime*60;
         isRunning = false;
         timer = gameObject.GetComponent<TextMeshProUGUI>();
         UpdateTimer();
