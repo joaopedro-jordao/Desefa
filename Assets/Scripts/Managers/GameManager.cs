@@ -10,8 +10,14 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }else{
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
+    }
+
+    private TimerManager timerManager;
+
+    void Start(){
+        GameObject timer = GameObject.Find("TimerManager");
+        timerManager = timer.GetComponent<TimerManager>();
     }
 
     public enum TurnPlayer {white, black};
@@ -34,5 +40,6 @@ public class GameManager : MonoBehaviour
     public void SwitchTurn(){
         if(turnPlayer == TurnPlayer.black) turnPlayer = TurnPlayer.white;
         else turnPlayer = TurnPlayer.black;
+        timerManager.SwitchTimer();
     }
 }

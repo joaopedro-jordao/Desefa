@@ -20,14 +20,18 @@ public class Board : MonoBehaviour
     private GameObject selectedPiece;
 
     //TILE prefabs
-    [SerializeField]
-    private GameObject highlightTile;
+    public GameObject highlightTile;
+
+    //Managers
+    private HudManager hudManager;
 
     private int playerCount = -1;
     private int currentTeam = -1;
 
     void Start()
     {
+        hudManager = GameObject.Find("HudManager").GetComponent<HudManager>();
+
         this.height = JSONMapReader.GetMapHeight(jsonMapa);
         this.width = JSONMapReader.GetMapWidth(jsonMapa);
         this.board = new Tile[this.width + 1, this.height + 1];
@@ -79,8 +83,10 @@ public class Board : MonoBehaviour
 
     void Update()
     {
+        Vector2Int mousePosition = MousePositionOnBoard();
+        SetStatus(mousePosition);
+
         if (Input.GetMouseButtonDown(0)){
-            Vector2Int mousePosition = MousePositionOnBoard();
 
             if (mousePosition.x > 0){
                 if (selectedPiece == null){
@@ -255,7 +261,7 @@ public class Board : MonoBehaviour
         Piece pieceTwoScript = pieceTwo.GetComponent<Piece>();
 
         if(pieceOneScript.GetPieceType() == pieceTwoScript.GetPieceType()){
-            pieceTwoScript.MergePiece(pieceOneScript.GetCurrHP());
+            pieceTwoScript.MergePiece(pieceOneScript);
             return true;
         }
         return false;
@@ -319,4 +325,7 @@ public class Board : MonoBehaviour
             GameManager.Instance.SwitchTurn();
         }
     }  
+    private void SetStatus(Vector2Int mousePosition){
+        hudManager.UpdatePieceStatus(board[mousePosition.x, mousePosition.y].GetPiece());
+    }
 }
