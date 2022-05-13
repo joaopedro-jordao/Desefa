@@ -5277,24 +5277,6 @@ CanvasRenderer:
   - {fileID: 6011446869134770356, guid: cc51fa6c3aed6594f9bc30af51d022e1, type: 3}
   - {fileID: 4727409194353185903, guid: b6cc4969b6b5819499b80ad4db708d75, type: 3}
   highlightTile: {fileID: 1693103968094173422, guid: 1a0bc910db28d2a4395c9ac38e2a18ec, type: 3}
---- !u!1 &1048171296
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1749158451}
-  - component: {fileID: 1749158453}
-  - component: {fileID: 1749158452}
-  m_Layer: 5
-  m_Name: AtkStatus
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!224 &1749158451
 RectTransform:
   m_ObjectHideFlags: 0
