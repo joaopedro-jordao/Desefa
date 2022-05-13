@@ -307,7 +307,7 @@ public class Board : MonoBehaviour
 
     private void OnStartGameClient(NetMessage obj)
     {
-        //wait
+        //wait;;
     }
 
     private void OnMakeMoveServer(NetMessage msg, NetworkConnection cnn){

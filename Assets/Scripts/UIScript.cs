@@ -21,7 +21,7 @@ public class UIScript : MonoBehaviour
     public void OnHostGameButton(){
         server.Init(8007);
         client.Init("127.0.0.1", 8007);
-        menuAnimator.SetTrigger("HostMenuAnimation");
+        menuAnimator.SetTrigger("InGameMenu");
     }
 
     public void OnEnterGameButton(){
