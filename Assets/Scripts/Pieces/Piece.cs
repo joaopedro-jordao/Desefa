@@ -61,8 +61,18 @@ public abstract class Piece : MonoBehaviour{
         return this.team;
     }
 
+    private void UpdateLifebar(){
+        Transform lifebar = transform.Find("Lifebar");
+
+        if(lifebar == null) return;
+
+        Vector3 scale = lifebar.localScale;
+        lifebar.localScale = new Vector3((1.0f*currHitPoints)/(maxHitPoints), scale.y, scale.z);
+    }
+
     public void IsAttackedBy(Piece opponent){
-        this.currHitPoints = (this.currHitPoints - opponent.GetAP());
+        this.currHitPoints = Mathf.Max(0, (this.currHitPoints - opponent.GetAP()));
+        UpdateLifebar();
     }
 
     public bool IsAlive(){
@@ -82,6 +92,7 @@ public abstract class Piece : MonoBehaviour{
         this.currHitPoints = currHitPoints + piece.GetCurrHP();
         this.maxHitPoints += piece.GetMaxHP();
         this.attackPower += piece.GetAP();
+        UpdateLifebar();
     }
 
     public PieceType GetPieceType(){
