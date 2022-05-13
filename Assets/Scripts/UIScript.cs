@@ -40,7 +40,7 @@ public class UIScript : MonoBehaviour
 
     public void OnEnterGameConnectButton(){
         client.Init(addressInput.text, 8007);
-        menuAnimator.SetTrigger("OnEnterGameConnectButton");//$$
+        menuAnimator.SetTrigger("InGameMenu");//$$
     }
 
 }
