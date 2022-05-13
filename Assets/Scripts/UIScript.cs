@@ -18,6 +18,8 @@ public class UIScript : MonoBehaviour
         Instance = this;
     }
 
+    //Buttons transitions
+
     public void OnHostGameButton(){
         server.Init(8007);
         client.Init("127.0.0.1", 8007);
