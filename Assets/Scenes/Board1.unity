@@ -6188,7 +6188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab12af6b7fc9c8748bdf3a1013030957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTMP: {fileID: 1749158452}
+  attackTMP: {fileID: 1677134282}
   HpValueTMP: {fileID: 1666630993}
 --- !u!1 &2137169187
 GameObject:
